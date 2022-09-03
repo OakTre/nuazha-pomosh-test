@@ -1,0 +1,41 @@
+:root {
+	// Typography
+	--main-ff: "Futura", sans-serif;
+
+	// colors
+  --color-black: #302F2D;
+  --color-white: #ffffff;
+  --color-red: #E65639;
+  --color-red-hover: #d13924;
+  --color-grey-98: #FAFAFA;
+  --color-grey-90: #E6E6E6;
+  --color-grey-60: #999999;
+  --color-bg: var(--color-white);
+
+  // fonts
+  --font-hero: 400 5rem/1 var(--main-ff);
+  --font-l: 400 3rem/3.5rem var(--main-ff);
+  --font-m: 400 2rem/2.5rem var(--main-ff);
+  --font-s: 400 1.7rem/2rem var(--main-ff);
+  --font-btn: 400 1.6rem/1.8rem var(--main-ff);
+
+  // etc
+  --page-panel-width: 36rem;
+  --content-padding: 60px;
+  --transition: .1s ease-in;
+}
+
+@import "./helpers/**/*";
+@import './vendor/**/*';
+@import "./settings/**/*";
+@import "./UI/**/*";
+@import "./blocks/**/*";
+@import './pages/**/*';
+
+
+
+@include mq(custom, max, 1536) {
+  :root {
+    --content-padding: 30px;
+  }
+}

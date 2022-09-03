@@ -1,0 +1,6 @@
+mixin filter(arr)
+  .filter&attributes(attributes)
+    for item in arr
+      label.filter__item
+        input(type="radio" name="filter" value=item class="visually-hidden")
+        span.filter__name= item

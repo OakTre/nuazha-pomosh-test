@@ -1,0 +1,16 @@
+.user {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 2rem;
+  }
+
+  &__name {
+    min-width: 24rem;
+  }
+}

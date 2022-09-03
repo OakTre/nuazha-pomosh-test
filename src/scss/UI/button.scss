@@ -1,0 +1,12 @@
+.button {
+  padding: 2.2rem 4rem;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font: var(--font-btn);
+  text-transform: uppercase;
+  transition: background-color var(--transition);
+
+  &:hover {
+    background-color: var(--color-red-hover);
+  }
+}

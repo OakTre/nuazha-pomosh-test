@@ -1,0 +1,56 @@
+aside.page-panel
+  button.page-panel__btn
+    +icon-mono("menu")(width="20" height="20" class="page-panel__btn-icon")
+    span.page-panel__name Панель управления
+section.collection
+  h1.collection__heading Создание сбора
+  .collection__content
+    h2.page-title.collection__title Информация о сборе
+    label.input-label.collection__label
+      span.input-label__name Название сбора
+      input(type="text" name="input" class="input")
+    .target-groups
+      h2.page-title.target-groups__title Целевые группы
+      p.collection__txt Укажите, кому помогает ваша организация
+      .result-group.collection__result-group
+        .result
+          .result__item Дети
+          .result__arrow
+            +icon-mono("arrow-right")(class="result__arrow-icon" width="20" height="20")
+          .result__item Имеюшие тяжелые заболевания
+          .result__arrow
+            +icon-mono("arrow-right")(class="result__arrow-icon" width="20" height="20")
+          .result__item Заболевания опорно-двигательного аппарата
+          button.result__clear(aria-label="Очистить поле")
+      .my-select.collection__select.js-select-parent
+        button.my-select__btn.js-select
+          span.my-select__btn-icon
+          span.my-select__btn-text Выбрать еще
+        .my-select__options-wrapper
+          ul.my-select__options.js-option-parent
+            li.my-select__option.js-option(data-value="kids")
+              span.my-select__option-label Дети
+              +icon-mono("shevron-right")(width="10" height="12" class="my-select__option-icon")
+            li.my-select__option
+              span.my-select__option-label Дети
+              +icon-mono("shevron-right")(width="10" height="12" class="my-select__option-icon")
+            li.my-select__option
+              span.my-select__option-label Дети
+              +icon-mono("shevron-right")(width="10" height="12" class="my-select__option-icon")
+            li.my-select__option
+              span.my-select__option-label Дети
+              +icon-mono("shevron-right")(width="10" height="12" class="my-select__option-icon")
+          ul.my-select__options.my-select__options-child.js-option-child(data-value-child="kids")
+            li.my-select__option.my-select__option--back.js-option-back(data-value-back="kids")
+              +icon-mono("shevron-right")(width="10" height="12" class="my-select__option-icon")
+              span.my-select__option-label Дети
+            li.my-select__option
+              span.my-select__option-label Все дети
+            li.my-select__option
+              span.my-select__option-label С инвалидностью
+            li.my-select__option
+              span.my-select__option-label ВИЧ-положительные
+            li.my-select__option
+              span.my-select__option-label Мигранты и беженцы
+
+    button.button сохранить и продолжить

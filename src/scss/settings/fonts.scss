@@ -1,0 +1,12 @@
+@font-face {
+	font-weight: 400;
+	font-family: "Futura";
+	font-style: normal;
+	font-display: swap;
+	src:
+    local("FuturaBook"),
+    local("FuturaBook-Regular"),
+    local("FuturaBook-Regular"),
+		url("../fonts/futura.woff2") format("woff2"),
+		url("../fonts/futura.woff") format("woff");
+}

@@ -1,0 +1,74 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin customScrollbar {
+  &::-webkit-scrollbar {
+    background-color: var(--color-grey-300);
+    width: 0.2rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-grey-600);
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-grey-300);
+  }
+}
+
+@mixin noScrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar * {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
+
+
+@mixin gradienText {
+  background: var(--gradient-priamry2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-size: 240% 220%;
+  background-position: 180% 100%;
+  transition: background-position var(--transition);
+
+  &:hover {
+    background-position: 100% 100%;
+  }
+}

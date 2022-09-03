@@ -1,0 +1,106 @@
+.my-select {
+  position: relative;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-icon {
+    position: relative;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid var(--color-grey-90);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    margin-right: 2rem;
+
+    &::after,
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1.8rem;
+      height: 0.1rem;
+      background-color: var(--color-grey-60);
+      transform: translate(-50%, -50%);
+      content: "";
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__options-wrapper {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    padding-bottom: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition), visibility var(--transition);
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__options {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-90);
+    min-width: 28rem;
+    border-radius: 0.5rem;
+
+    &.is-hidden {
+      display: none;
+    }
+  }
+
+  &__option {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &--back {
+      justify-content: flex-start;
+
+      .my-select__option-icon {
+        transform: scale(-1, 1);
+      }
+
+      .my-select__option-label {
+        color: var(--color-grey-60);
+        margin-left: 1rem;
+      }
+    }
+
+    &:hover {
+      background-color: var(--color-grey-98);
+    }
+  }
+
+  &__options-child {
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+  }
+
+  &__option-label {
+    font: var(--font-s);
+  }
+
+  &__option-icon {
+    position: relative;
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: var(--color-grey-60);
+  }
+}
