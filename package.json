@@ -12,7 +12,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/OakTre/geshtalt.git"
+		"url": "git+https://github.com/OakTre/nuazha-pomosh-test.git"
 	},
 	"lint-staged": {
 		"*.js": "eslint",

@@ -21,11 +21,17 @@ const iconsBuild = () => (
     .pipe(gulp.dest(config.dest.icons))
 );
 
-export const assetsBuild = gulp.parallel(fontsBuild, faviconBuild, jsBackendBuild, iconsBuild);
+const includeBuild = () => (
+  gulp.src(`${config.src.include}/**/*`)
+    .pipe(gulp.dest(config.dest.include))
+);
+
+export const assetsBuild = gulp.parallel(fontsBuild, faviconBuild, jsBackendBuild, iconsBuild, includeBuild);
 
 export const assetsWatch = () => {
   gulp.watch(`${config.src.fonts}/**/*`, fontsBuild);
   gulp.watch(`${config.src.favicon}/**/*`, faviconBuild);
   gulp.watch(`${config.src.backendJs}/**/*`, jsBackendBuild);
   gulp.watch(`${config.src.icons}/**/*`, iconsBuild);
+  gulp.watch(`${config.src.include}/**/*`, includeBuild);
 };

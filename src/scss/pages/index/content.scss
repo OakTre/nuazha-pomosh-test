@@ -22,11 +22,19 @@
   }
 
   &__txt {
-    margin-bottom: 5.4rem;
+    // margin-bottom: 5.4rem;
   }
 
   &__result-group {
-    margin-bottom: 6rem;
+    margin-top: 5.4rem;
+
+    &.is-hidden {
+      display: none;
+    }
+  }
+
+  &__select {
+    margin-top: 6rem;
   }
 }
 
