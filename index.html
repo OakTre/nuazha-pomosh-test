@@ -56,66 +56,11 @@
             <div class="target-groups">
               <h2 class="page-title target-groups__title">Целевые группы</h2>
               <p class="collection__txt">Укажите, кому помогает ваша организация</p>
-              <div class="result-group collection__result-group">
-                <div class="result">
-                  <div class="result__item">Дети</div>
-                  <div class="result__arrow">
-                    <svg class="icon icon-arrow-right result__arrow-icon" width="20" height="20">
-                      <use xlink:href="assets/images/sprites/sprite-mono.svg#arrow-right"></use>
-                    </svg>
-                  </div>
-                  <div class="result__item">Имеюшие тяжелые заболевания</div>
-                  <div class="result__arrow">
-                    <svg class="icon icon-arrow-right result__arrow-icon" width="20" height="20">
-                      <use xlink:href="assets/images/sprites/sprite-mono.svg#arrow-right"></use>
-                    </svg>
-                  </div>
-                  <div class="result__item">Заболевания опорно-двигательного аппарата</div>
-                  <button class="result__clear" aria-label="Очистить поле"></button>
-                </div>
-              </div>
+              <div class="result-group collection__result-group js-result-group"></div>
               <div class="my-select collection__select js-select-parent">
                 <button class="my-select__btn js-select"><span class="my-select__btn-icon"></span><span class="my-select__btn-text">Выбрать еще</span>
                 </button>
-                <div class="my-select__options-wrapper">
-                  <ul class="my-select__options js-option-parent">
-                    <li class="my-select__option js-option" data-value="kids"><span class="my-select__option-label">Дети</span>
-                      <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-                        <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-                      </svg>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">Дети</span>
-                      <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-                        <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-                      </svg>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">Дети</span>
-                      <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-                        <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-                      </svg>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">Дети</span>
-                      <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-                        <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-                      </svg>
-                    </li>
-                  </ul>
-                  <ul class="my-select__options my-select__options-child js-option-child" data-value-child="kids">
-                    <li class="my-select__option my-select__option--back js-option-back" data-value-back="kids">
-                      <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-                        <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-                      </svg><span class="my-select__option-label">Дети</span>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">Все дети</span>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">С инвалидностью</span>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">ВИЧ-положительные</span>
-                    </li>
-                    <li class="my-select__option"><span class="my-select__option-label">Мигранты и беженцы</span>
-                    </li>
-                  </ul>
-                </div>
+                <div class="my-select__options-wrapper"></div>
               </div>
             </div>
             <button class="button">сохранить и продолжить</button>
