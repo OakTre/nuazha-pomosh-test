@@ -11,7 +11,8 @@ aside.page-panel
 section.collection
   h1.collection__heading Создание сбора
 
-  .collection__content
+  form.collection__content
+    input(type="hidden" class="data" value="")
     h2.page-title.collection__title Информация о сборе
     label.input-label.collection__label
       span.input-label__name Название сбора
@@ -23,7 +24,7 @@ section.collection
       .result-group.collection__result-group.js-result-group
 
       .my-select.collection__select.js-select-parent
-        button.my-select__btn.js-select
+        button.my-select__btn.js-select(type="button")
           span.my-select__btn-icon
           span.my-select__btn-text Выбрать еще
 

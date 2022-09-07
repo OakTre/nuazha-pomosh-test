@@ -6,8 +6,11 @@ export default () => {
   const resultContainer = document.querySelector(".js-result-group");
   const selectOptionsContainer = document.querySelector('.my-select__options-wrapper');
   const resultsItem = document.querySelectorAll(".result");
-  const url = '/assets/include/gruops.json';
+  const form = document.querySelector("form");
+  const url = './assets/include/gruops.json';
   let isOpen;
+  let optionsArr = [];
+  let ids = [];
 
   if (resultsItem.length === 0) {
     resultContainer.classList.add("is-hidden");
@@ -16,6 +19,25 @@ export default () => {
   function showResultContainer() {
     resultContainer.classList.remove("is-hidden");
   }
+
+  function closeResultContainer() {
+    if (document.querySelectorAll(".result").length === 0) {
+      resultContainer.classList.add("is-hidden");
+    };
+  };
+
+  function initCloseResults() {
+    const btns = Array.from(document.querySelectorAll(".result__clear"));
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        let result = btn.closest(".result");
+
+        result.remove();
+        closeResultContainer();
+      })
+    });
+  };
 
   function closeSelect() {
     selectParent.querySelector(".my-select__options-wrapper").classList.remove("is-active");
@@ -52,6 +74,8 @@ export default () => {
         result.insertAdjacentHTML('beforeend', '<button class="result__clear" aria-label="Очистить поле"></button>');
 
         resultContainer.append(result);
+        optionsArr = [];
+        ids = [];
       }
     };
   };
@@ -60,16 +84,26 @@ export default () => {
     const optionsWrapper = document.createElement('ul');
     optionsWrapper.classList.add("my-select__options");
     optionsWrapper.classList.add("js-option-parent");
+    let layout;
 
     for (let [index, value] of arr.entries()) {
-      let layout = `
-        <li class="my-select__option js-option" data-value="${value}">
-          <span class="my-select__option-label">${value}</span>
-          <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
-            <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
-          </svg>
-        </li>
-      `;
+      if (value.groups.length !== 0) {
+        optionsWrapper.setAttribute("data-value-parent", value.name);
+        layout = `
+          <li class="my-select__option js-option" data-value="${value.name}" data-id="${value.id}">
+            <span class="my-select__option-label">${value.name}</span>
+            <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
+              <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
+            </svg>
+          </li>
+        `;
+      } else {
+        layout = `
+          <li class="my-select__option js-option-choose" data-id="${value.id}">
+            <span class="my-select__option-label">${value.name}</span>
+          </li>
+        `;
+      }
 
       optionsWrapper.innerHTML += layout;
 
@@ -85,9 +119,11 @@ export default () => {
     optionsWrapper.classList.add("js-option-child");
     optionsWrapper.classList.add("my-select__options-child");
     optionsWrapper.setAttribute("data-value-child", arr.name);
+    optionsWrapper.setAttribute("data-value-parent", arr.name);
+    let layout;
 
     optionsWrapper.insertAdjacentHTML('afterbegin', `
-      <li class="my-select__option my-select__option--back js-option-back" data-value-back="Дети">
+      <li class="my-select__option my-select__option--back js-option-back" data-value-back="${arr.name}">
         <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
           <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
         </svg><span class="my-select__option-label">${arr.name}</span>
@@ -95,11 +131,24 @@ export default () => {
     `);
 
     for (let [index, option] of arr.groups.entries()) {
-      let layout = `
-        <li class="my-select__option js-option-choose">
-          <span class="my-select__option-label">${option.name}</span>
-        </li>
-      `;
+
+      if (option.groups.length !== 0) {
+        optionsWrapper.setAttribute("data-value-parent", option.name);
+        layout = `
+          <li class="my-select__option js-option" data-has-childs data-value="${option.name}" data-id="${option.id}">
+            <span class="my-select__option-label">${option.name}</span>
+            <svg class="icon icon-shevron-right my-select__option-icon" width="10" height="12">
+              <use xlink:href="assets/images/sprites/sprite-mono.svg#shevron-right"></use>
+            </svg>
+          </li>
+        `;
+      } else {
+        layout = `
+          <li class="my-select__option js-option-choose" data-id="${option.id}">
+            <span class="my-select__option-label">${option.name}</span>
+          </li>
+        `;
+      }
 
       optionsWrapper.innerHTML += layout;
 
@@ -112,16 +161,17 @@ export default () => {
   sendRequest("GET", url)
     .then((resp) => {
       const data = resp.groups;
-      let nameArr = [];
 
-      data.forEach(group => {
-        nameArr.push(group.name);
-      });
-
-      optionItem(nameArr);
+      optionItem(data);
 
       data.forEach(group => {
         optionItemChild(group);
+
+        group.groups.forEach(grps => {
+          if(grps.groups.length !== 0) {
+            optionItemChild(grps);
+          }
+        });
       });
 
     })
@@ -133,43 +183,51 @@ export default () => {
       options.forEach(option => {
         option.addEventListener("click", () => {
           const value = option.dataset.value;
-          document.querySelector(".js-option-parent").classList.add("is-hidden");
-          document.querySelector(`.js-option-child[data-value-child=${value}]`).classList.add("is-open");
+          const id = option.dataset.id;
+
+          optionsArr.push(value);
+          ids.push(id);
+
+          document.querySelector(`[data-value-parent="${value}"]`).classList.add("is-hidden");
+          document.querySelector("[data-has-childs]").closest(".my-select__options").classList.remove("is-open");
+          document.querySelector(`.js-option-child[data-value-child="${value}"]`).classList.add("is-open");
         });
       });
 
       backOptions.forEach(option => {
         option.addEventListener("click", () => {
+          optionsArr.pop();
+          ids.pop();
           const value = option.dataset.valueBack;
-          document.querySelector(".js-option-parent").classList.remove("is-hidden");
-          document.querySelector(`.js-option-child[data-value-child=${value}]`).classList.remove("is-open");
+
+          document.querySelector(`[data-value-parent="${value}"]`).classList.remove("is-hidden");
+          document.querySelector(`[data-value-parent="${value}"]`).classList.add("is-open");
+          document.querySelector(`.js-option-child[data-value-child="${value}"]`).classList.remove("is-open");
         });
       });
 
       chooseResultOptions.forEach(option => {
         option.addEventListener("click", () => {
-          let arr = [];
           const value = option.querySelector(".my-select__option-label").innerHTML;
-          arr.push(value);
+          const id = option.dataset.id;
+          ids.push(id);
+          optionsArr.push(value);
+          const input = document.createElement('input');
+          input.setAttribute("type", "hidden");
+          input.setAttribute("name", "options");
+          input.setAttribute("value", JSON.stringify(ids));
 
-          resultItemLayout(arr);
+          form.append(input);
+
+          resultItemLayout(optionsArr);
           showResultContainer();
           closeSelect();
+          initCloseResults();
         });
       });
     });
 
   // resultItemLayout(["Дети", "Имеюшие тяжелые заболевания"]);
-
-  // const btns = Array.from(document.querySelectorAll(".result__clear"));
-
-  // btns.forEach(btn => {
-  //   btn.addEventListener("click", () => {
-  //     let result = btn.closest(".result");
-
-  //     result.remove();
-  //   })
-  // });
 
 
   select.addEventListener("click", () => {
