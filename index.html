@@ -48,7 +48,8 @@
         </aside>
         <section class="collection">
           <h1 class="collection__heading">Создание сбора</h1>
-          <div class="collection__content">
+          <form class="collection__content">
+            <input class="data" type="hidden" value="">
             <h2 class="page-title collection__title">Информация о сборе</h2>
             <label class="input-label collection__label"><span class="input-label__name">Название сбора</span>
               <input class="input" type="text" name="input">
@@ -58,13 +59,13 @@
               <p class="collection__txt">Укажите, кому помогает ваша организация</p>
               <div class="result-group collection__result-group js-result-group"></div>
               <div class="my-select collection__select js-select-parent">
-                <button class="my-select__btn js-select"><span class="my-select__btn-icon"></span><span class="my-select__btn-text">Выбрать еще</span>
+                <button class="my-select__btn js-select" type="button"><span class="my-select__btn-icon"></span><span class="my-select__btn-text">Выбрать еще</span>
                 </button>
                 <div class="my-select__options-wrapper"></div>
               </div>
             </div>
             <button class="button">сохранить и продолжить</button>
-          </div>
+          </form>
         </section>
       </main>
     </div>
