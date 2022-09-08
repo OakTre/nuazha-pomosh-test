@@ -45,6 +45,12 @@
       transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
+
+  &__item {
+    @include mq(md) {
+      font: var(--font-s-mobile);
+    }
+  }
 }
 
 .result-group {

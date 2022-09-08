@@ -9,4 +9,9 @@
   &:hover {
     background-color: var(--color-red-hover);
   }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }

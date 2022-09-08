@@ -7,6 +7,4 @@ export default () => {
     isClose: (modal) => {
     },
   });
-
-  // window.medikamarket_API.modal = modal;
 };

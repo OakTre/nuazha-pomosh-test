@@ -12,6 +12,14 @@ html {
   @include mq(custom, min, 2000) {
     font-size: 12px;
   }
+
+  @include mq(custom, max, 1536) {
+    font-size: 9px;
+  }
+
+  @include mq(custom, max, 1366) {
+    font-size: 8px;
+  }
 }
 
 body {

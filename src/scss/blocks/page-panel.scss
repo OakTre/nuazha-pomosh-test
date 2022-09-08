@@ -17,4 +17,10 @@
     stroke: var(--color-black);
     margin-right: 3rem;
   }
+
+  &__name {
+    @include mq(lg) {
+      display: none;
+    }
+  }
 }

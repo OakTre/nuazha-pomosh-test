@@ -18,6 +18,7 @@
   --font-m: 400 2rem/2.5rem var(--main-ff);
   --font-s: 400 1.7rem/2rem var(--main-ff);
   --font-btn: 400 1.6rem/1.8rem var(--main-ff);
+  --font-s-mobile: 400 1.4rem/1.6rem var(--main-ff);
 
   // etc
   --page-panel-width: 36rem;
@@ -36,6 +37,13 @@
 
 @include mq(custom, max, 1536) {
   :root {
+    --content-padding: 30px;
+  }
+}
+
+@include mq(lg) {
+  :root {
+    --page-panel-width: 9rem;
     --content-padding: 30px;
   }
 }

@@ -8,7 +8,7 @@ import select from './modules/select';
 import formSend from './modules/formSend';
 
 documenReady(() => {
-  window.___YOUR_PROJECT___API = { };
+  window.__FONTEND_TEST_API__ = { optionIds: [] };
 
   lazyIMages();
   initModal();

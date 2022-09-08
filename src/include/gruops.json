@@ -1,5 +1,6 @@
 {
-  "groups": [{
+  "groups": [
+    {
       "id": 1,
       "name": "Дети",
       "groups": [

@@ -11,6 +11,10 @@
     border-radius: 1rem;
     border: 1px solid var(--color-grey-90);
     padding: 4rem 6rem 6rem 6rem;
+
+    @include mq(md) {
+      padding: 3rem 3rem 3rem 3rem;
+    }
   }
 
   &__title {

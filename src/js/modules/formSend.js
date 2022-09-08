@@ -3,8 +3,20 @@ export default () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const inpts = form.querySelectorAll("input[type=hidden]");
+    const data = form.querySelector(".data");
+    const results = form.querySelectorAll(".result");
 
-    inpts.forEach( inpt => console.log(inpt.value));
+    console.log(data.value);
+
+    alert(`Результат: ${data.value}`);
+
+    data.value = '';
+
+    results.forEach( result => {
+      result.remove();
+    });
+
+    document.querySelector(".js-result-group").classList.add("is-hidden");
+    form.querySelector(".button").classList.add("disabled");
   });
 };
