@@ -1,6 +1,8 @@
-# Фронтенд тестовое
+# frontend-test
 
 ## Ссылки
+
+1. [Главная](https://oaktre.github.io/nuazha-pomosh-test/)
 
 
 ## Список команд
@@ -9,14 +11,4 @@
 2. Запуск сборщика - npm run dev
 3. Сборка prod(dev) версии - npm run build:dev
 4. Сборка prod версии - npm run build:prod
-
-### Особенности
-
-После устоновки всех пакетов нужно из файла:
-```
-node_modules/pug-parser/lib/inline-tag.js
-```
-удалить теги
-```
-a, span, img
-```
+5. Публикация в gh-pages - npm run deploy
